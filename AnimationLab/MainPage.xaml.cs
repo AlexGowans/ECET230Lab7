@@ -46,26 +46,25 @@ namespace AnimationLab
             dispatcherTimer.Start();                                    //Start timer
         }
 
-        void dispatcherTimer_Tick(object sender, object e) {
-            DateTimeOffset time = DateTimeOffset.Now;
-            TimeSpan span = time - lastTime;
-            lastTime = time;
-
-            timesTicked++;
-
-
-            var path1 = new Windows.UI.Xaml.Shapes.Path();
-            path1.Fill = new SolidColorBrush(Windows.UI.Colors.DarkSalmon);
+        void dispatcherTimer_Tick(object sender, object e) {            //what to do each tick
+            DateTimeOffset time = DateTimeOffset.Now;    //set a var to now
+            TimeSpan span = time - lastTime;            //how long since the last tick?
+            lastTime = time;                            //setcurrent time as last tick
+            timesTicked++;                              //increment ticks
 
 
-            var geometryGroup1 = new GeometryGroup();
+            var path1 = new Windows.UI.Xaml.Shapes.Path();                  //prepare to draw
+            path1.Fill = new SolidColorBrush(Windows.UI.Colors.DarkBlue);   //select a colour
 
 
-            var ellipseGeometry1 = new EllipseGeometry();
-            ellipseGeometry1.Center = new Point(positionX, positionY);
-            ellipseGeometry1.RadiusX = radius;
+            var geometryGroup1 = new GeometryGroup();                       //new geometry group
+
+
+            var ellipseGeometry1 = new EllipseGeometry();                   //elipse --> circle
+            ellipseGeometry1.Center = new Point(positionX, positionY);      //position of circle
+            ellipseGeometry1.RadiusX = radius;                              //circle has single radius all around
             ellipseGeometry1.RadiusY = radius;
-            geometryGroup1.Children.Add(ellipseGeometry1);
+            geometryGroup1.Children.Add(ellipseGeometry1);                  //shape stored to draw
 
             var pathGeometry1 = new PathGeometry();
 
