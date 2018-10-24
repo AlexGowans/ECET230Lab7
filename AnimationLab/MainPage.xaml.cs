@@ -25,6 +25,18 @@ namespace AnimationLab
         public MainPage()
         {
             this.InitializeComponent();
+            DispatcherTimer dispatcherTimer;
+            DateTimeOffset startTime;
+            DateTimeOffset lastTime;
+            //DateTimeOffset stopTime;
+            int timesTicked = 1;
+            //int timesToTick = 10;
+
+            int positionX = 100;
+            int positionY = 100;
+            int speedX = 10;
+            int speedY = 2;
+            int radius = 20;
         }
     }
 }
