@@ -70,14 +70,16 @@ namespace AnimationLab
 
 
             geometryGroup1.Children.Add(pathGeometry1);
-            path1.Data = geometryGroup1;
+            path1.Data = geometryGroup1;                                    //add our circle
 
             layoutRoot.Children.Clear();
-            layoutRoot.Children.Add(path1);
+            layoutRoot.Children.Add(path1);                                 //draw our circle
 
-            positionX += speedX;
-            positionY += speedY;
+            positionX += speedX;        //change position by x for next frame
+            positionY += speedY;        //change position by y for next frame
 
+
+            //Check for boundaries of the screen to and reverse necessarry direction to 'bounce' and stay in screen
             if (positionY + radius > layoutRoot.ActualHeight) {
                 speedY *= -1;
             }
@@ -94,7 +96,7 @@ namespace AnimationLab
             }
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e) {
+        private void Page_Loaded(object sender, RoutedEventArgs e) {        //This function starts our timer upon the xaml page loading
             DispatcherTimerSetup();
         }
     }
