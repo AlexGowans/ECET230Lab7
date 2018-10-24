@@ -51,5 +51,64 @@ namespace AnimationLab
             //IsEnabled should now be true after calling start
             //TimerLog.Text += "dispatcherTimer.IsEnabled = " + dispatcherTimer.IsEnabled + "\n";
         }
+
+        void dispatcherTimer_Tick(object sender, object e) {
+            DateTimeOffset time = DateTimeOffset.Now;
+            TimeSpan span = time - lastTime;
+            lastTime = time;
+            //Time since last tick should be very very close to Interval
+            //TimerLog.Text += timesTicked + "\t time since last tick: " + span.ToString() + "\n";
+            timesTicked++;
+            //if (timesTicked > timesToTick)
+            //{
+            //    stopTime = time;
+            //    TimerLog.Text += "Calling dispatcherTimer.Stop()\n";
+            //    dispatcherTimer.Stop();
+            //    //IsEnabled should now be false after calling stop
+            //    TimerLog.Text += "dispatcherTimer.IsEnabled = " + dispatcherTimer.IsEnabled + "\n";
+            //    span = stopTime - startTime;
+            //    TimerLog.Text += "Total Time Start-Stop: " + span.ToString() + "\n";
+            //}
+
+            var path1 = new Windows.UI.Xaml.Shapes.Path();
+            path1.Fill = new SolidColorBrush(Windows.UI.Colors.DarkSalmon);
+
+
+            var geometryGroup1 = new GeometryGroup();
+
+
+            var ellipseGeometry1 = new EllipseGeometry();
+            ellipseGeometry1.Center = new Point(positionX, positionY);
+            ellipseGeometry1.RadiusX = radius;
+            ellipseGeometry1.RadiusY = radius;
+            geometryGroup1.Children.Add(ellipseGeometry1);
+
+            var pathGeometry1 = new PathGeometry();
+
+
+            geometryGroup1.Children.Add(pathGeometry1);
+            path1.Data = geometryGroup1;
+
+            layoutRoot.Children.Clear();
+            layoutRoot.Children.Add(path1);
+
+            positionX += speedX;
+            positionY += speedY;
+
+            if (positionY + radius > layoutRoot.ActualHeight) {
+                speedY *= -1;
+            }
+
+            if (positionX + radius > layoutRoot.ActualWidth) {
+                speedX *= -1;
+            }
+            if (positionY - radius < 0) {
+                speedY *= -1;
+            }
+
+            if (positionX - radius < 0) {
+                speedX *= -1;
+            }
+        }
     }
 }
