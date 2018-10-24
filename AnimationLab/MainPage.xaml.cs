@@ -37,13 +37,13 @@ namespace AnimationLab
         int speedY = 20;
         int radius = 20;
 
-        public void DispatcherTimerSetup() {
-            dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 2);
-            startTime = DateTimeOffset.Now;
-            lastTime = startTime;
-            dispatcherTimer.Start();
+        public void DispatcherTimerSetup() {                            //This function sets up a timer so we can simulate physics
+            dispatcherTimer = new DispatcherTimer();                    //Create timer
+            dispatcherTimer.Tick += dispatcherTimer_Tick;               
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 2);     //How often to tick
+            startTime = DateTimeOffset.Now;                             //start time = current date/time
+            lastTime = startTime;                                       //when did we last tick? cant be before start
+            dispatcherTimer.Start();                                    //Start timer
         }
 
         void dispatcherTimer_Tick(object sender, object e) {
