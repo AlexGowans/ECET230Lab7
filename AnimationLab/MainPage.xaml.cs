@@ -35,7 +35,7 @@ namespace AnimationLab
         int positionX = 100;
         int positionY = 100;
         int speedX = 10;
-        int speedY = 2;
+        int speedY = 20;
         int radius = 20;
 
         public void DispatcherTimerSetup() {
