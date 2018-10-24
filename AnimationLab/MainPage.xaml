@@ -7,8 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
 
-    <Grid>
+    <Grid x:Name="layoutRoot">
+        <TextBlock x:Name="TimerLog" HorizontalAlignment="Left" Margin="10,10,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="1469" Height="975"/>
 
     </Grid>
 </Page>
