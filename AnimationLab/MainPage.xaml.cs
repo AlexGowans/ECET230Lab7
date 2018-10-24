@@ -110,5 +110,9 @@ namespace AnimationLab
                 speedX *= -1;
             }
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
+            DispatcherTimerSetup();
+        }
     }
 }
