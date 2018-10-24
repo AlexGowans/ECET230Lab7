@@ -96,7 +96,7 @@ namespace AnimationLab
             }
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e) {        //This function starts our timer upon the xaml page loading
+        private void Page_Loaded(object sender, RoutedEventArgs e) {        //This function starts our timer upon the xaml page loading 
             DispatcherTimerSetup();
         }
     }
