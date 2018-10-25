@@ -47,7 +47,7 @@ namespace AnimationLab
         Random rnd = new Random();
         int r = 255;                //Start at pure red
         int g = 0;                  //pure red cant have green
-        int b = 0;
+        int b = 0;                  //cant have blue either
 
         public void DispatcherTimerSetup() {                            //This function sets up a timer so we can simulate physics
             dispatcherTimer = new DispatcherTimer();                    //Create timer
