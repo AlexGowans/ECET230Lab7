@@ -30,12 +30,24 @@ namespace AnimationLab
         DateTimeOffset lastTime;
 
         int timesTicked = 1;
+        int colourTicker = 0;
+        int colourTimer = 10; //How long before colour change
 
         int positionX = 100;
         int positionY = 100;
         int speedX = 10;
         int speedY = 20;
-        int radius = 20;
+        int radius = 20;        //starting radius
+        int radiusMin = 20;
+        int radiusMax = 80;
+        int radiusDir = 1;      //1 or -1
+        int radiusSpeed = 5;    //speed radius changes
+
+        //Colour Setup
+        Random rnd = new Random();
+        int r = 255;                //Start at pure red
+        int g = 0;
+        int b = 0;
 
         public void DispatcherTimerSetup() {                            //This function sets up a timer so we can simulate physics
             dispatcherTimer = new DispatcherTimer();                    //Create timer
@@ -52,9 +64,23 @@ namespace AnimationLab
             lastTime = time;                            //setcurrent time as last tick
             timesTicked++;                              //increment ticks
 
+            //Set Colour
+            if (++colourTicker >= colourTimer) {
+                colourTicker = 0;     //reset counter
+                r = rnd.Next(0, 256); //create a number 0-255
+                g = rnd.Next(0, 256);
+                b = rnd.Next(0, 256);
+            }
+
+            //Strobe Ball Radius
+            radius += radiusDir * radiusSpeed;
+            if(radius >= radiusMax || radius <= radiusMin) {
+                radiusDir *= -1; //toggle size direction
+            }
+
 
             var path1 = new Windows.UI.Xaml.Shapes.Path();                  //prepare to draw
-            path1.Fill = new SolidColorBrush(Windows.UI.Colors.DarkBlue);   //select a colour
+            path1.Fill = new SolidColorBrush(Windows.UI.Color.FromArgb(Convert.ToByte(255), Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b)));   //set colour
 
 
             var geometryGroup1 = new GeometryGroup();                       //new geometry group
@@ -99,5 +125,6 @@ namespace AnimationLab
         private void Page_Loaded(object sender, RoutedEventArgs e) {        //This function starts our timer upon the xaml page loading       
             DispatcherTimerSetup();
         }
+
     }
 }
