@@ -46,7 +46,7 @@ namespace AnimationLab
         //Colour Setup
         Random rnd = new Random();
         int r = 255;                //Start at pure red
-        int g = 0;
+        int g = 0;                  //pure red cant have green
         int b = 0;
 
         public void DispatcherTimerSetup() {                            //This function sets up a timer so we can simulate physics
